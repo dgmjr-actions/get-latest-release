@@ -1,0 +1,23 @@
+name: Get the latest release of a repo
+description: Gets the latest release of a repo
+author: David G. Moore, Jr., <david@dgmjr.io>
+
+inputs:
+    TOKEN: 
+      description: The GitHub token
+      required: true  
+    repo:
+      description: The repo to check in the form [owner]/[repo]
+      required: true
+outputs:
+    latest-version:
+      description: The latest version of the repo
+      value: ${{ steps.get-latest-version.outputs.latest-version }}
+      
+
+runs:
+  using: composite
+  steps: 
+    - name: get-latest-version
+      shell: bash
+      run: echo "latest-version=$(ts-node get-latest-version.ts ${{ inputs.TOKEN }} ${{ inputs.repo }})" >> $GITHUB_OUTPUT
