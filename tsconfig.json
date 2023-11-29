@@ -6,7 +6,8 @@
         "rootDir": "./src",
         "outDir": "./lib",
         "module": "NodeNext",
-        "noEmit": true
+        "noEmit": true,
+        "moduleResolution": "NodeNext"
     },
     "include": [
         "./**/*.ts"
